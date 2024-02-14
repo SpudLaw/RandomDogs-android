@@ -1,0 +1,43 @@
+[versions]
+
+androidx-junit = "1.1.5"
+constraintlayout = "2.1.4"
+appcompat = "1.6.1"
+core-ktx = "1.12.0"
+espresso-core = "3.5.1"
+fragment-ktx = "1.6.2"
+junit = "4.13.2"
+kotlin = "1.9.22"
+material = "1.11.0"
+serialization = "1.6.2"
+ktor = "2.3.8"
+
+coil = "2.5.0"
+
+coroutines = "1.7.3"
+
+nav_version = "2.7.7"
+
+[libraries]
+
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
+ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment-ktx" }
+junit = { module = "junit:junit", version.ref = "junit" }
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-contentnegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+
+navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "nav_version" }
+navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "nav_version" }

@@ -1,6 +1,6 @@
 package com.example.randomdogs.data
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.Serializable
 
-data class RandomDogDataModel(@field:Json(name = "message") val message: String,
-                              @field:Json(name = "status") val status: String)
+@Serializable
+data class RandomDogDataModel(val message: String, val status: String)
