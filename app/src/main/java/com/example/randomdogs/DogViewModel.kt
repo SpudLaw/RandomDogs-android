@@ -1,30 +1,20 @@
 package com.example.randomdogs
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import com.example.randomdogs.network.ApiClient.Companion.getApiClient
+import androidx.lifecycle.viewModelScope
 import com.example.randomdogs.network.ApiInterface
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.randomdogs.network.ApiProvider
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import java.net.URL
 
-class DogViewModel: ViewModel() {
-    private val lazyService: ApiInterface by lazy {
-        getApiClient().create(ApiInterface::class.java)
-    }
+class DogViewModel : ViewModel() {
+    private val service: ApiInterface by lazy { ApiProvider.apiClient }
 
-    var dogImage = MutableLiveData<Bitmap>()
+    var dogImage = MutableSharedFlow<String>(replay = 1)
 
-    fun fetchNewImage() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val url = URL(lazyService.fetchDogImage().message)
-            val image = BitmapFactory.decodeStream(url.openConnection().getInputStream())
-            dogImage.postValue(image)
-        }
+    fun fetchNewImage() = viewModelScope.launch {
+        val message = service.fetchDogImage().message
+        dogImage.tryEmit(message)
     }
 }
 
