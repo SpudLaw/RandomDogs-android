@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    kotlin("android")
     kotlin("plugin.serialization")
 }
 
@@ -29,13 +29,18 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
     }
+
+    composeOptions.kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        //isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
@@ -53,6 +58,7 @@ dependencies {
     implementation(libs.fragment.ktx)
 
     implementation(libs.coil)
+    implementation(libs.coil.compose)
 
     implementation(libs.navigation.ui)
     implementation(libs.navigation.fragment)
@@ -60,4 +66,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation(libs.compose.foundation)
+    implementation(libs.bundles.compose.views)
+    debugImplementation(libs.bundles.compose.debug)
+    androidTestImplementation(libs.compose.test.junit4)
+}
+repositories {
+    google()
 }

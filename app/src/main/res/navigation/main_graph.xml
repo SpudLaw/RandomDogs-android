@@ -3,10 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/dog_screen">
+    app:startDestination="@id/dog_screen_choose">
 
     <fragment
-        android:id="@+id/dog_screen"
+        android:id="@+id/dog_screen_choose"
+        android:name="com.example.randomdogs.LayoutDecisionFragment"
+        tools:layout="@layout/fragment_dog">
+        <action
+            android:id="@+id/navigate_to_compose"
+            app:destination="@+id/dog_screen_compose" />
+        <action
+            android:id="@+id/navigate_to_xml"
+            app:destination="@id/dog_screen_xml" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dog_screen_compose"
+        android:name="com.example.randomdogs.DogComposeFragment"
+        tools:layout="@layout/fragment_dog" />
+    <fragment
+        android:id="@+id/dog_screen_xml"
         android:name="com.example.randomdogs.DogFragment"
         tools:layout="@layout/fragment_dog" />
 </navigation>
